@@ -11,11 +11,11 @@ export const AppProvider=({children})=>{
     const toggleDarkTheme=()=>{
         const newDarkTheme=!isDarkTheme;
         setDarkTheme(newDarkTheme);
-        localStorage.setItem('darkTheme',newDarkTheme);
+        
     }
     useEffect(()=>{
         document.body.classList.toggle('dark-theme',isDarkTheme);
-    },[])
+    },[isDarkTheme])
     return (<AppContext.Provider value={{isDarkTheme,toggleDarkTheme,searchTerm,setSearchTerm}}>{children}</AppContext.Provider>)
 }
 export const useGlobalContext=()=>useContext(AppContext);
